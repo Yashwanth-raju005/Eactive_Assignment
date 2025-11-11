@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="fw-bold text-primary">User Directory</h1>
+  <a href="/new_user" class="btn btn-primary btn-lg shadow-sm">➕ Add New User</a>
+</div>
+
+<div class="table-responsive shadow-sm rounded bg-white p-3">
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Profile</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>
+          {% if user.avatar_url %}
+            <img src="{{ user.avatar_url }}" class="avatar-thumb me-2" alt="avatar" onerror="this.src='/static/placeholder.png'">
+          {% else %}
+            <div class="avatar-placeholder me-2">{{ user.name[0]|upper }}</div>
+          {% endif %}
+          <a href="/users/{{ user.id }}" class="text-decoration-none">{{ user.name }}</a>
+        </td>
+        <td>{{ user.email }}</td>
+        <td><span class="badge bg-info text-dark px-3 py-2">{{ user.role }}</span></td>
+        <td>
+          <a href="/edit_user/{{ user.id }}" class="btn btn-sm btn-warning">✏️ Edit</a>
+          <form action="/delete_user/{{ user.id }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure?');">
+            <button class="btn btn-sm btn-danger">🗑️ Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

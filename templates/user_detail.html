@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-lg-6 mx-auto">
+  {% if user %}
+  <div class="card user-card shadow-lg border-0 p-4 rounded-4 bg-white text-center">
+    <div class="card-body">
+      {% if user.avatar_url %}
+        <img src="{{ user.avatar_url }}" alt="User Avatar" class="user-avatar-img shadow-sm mb-3" onerror="this.src='/static/placeholder.png'">
+      {% else %}
+        <div class="avatar-placeholder-large mb-3">{{ user.name[0]|upper }}</div>
+      {% endif %}
+      <h2 class="fw-bold text-dark">{{ user.name }}</h2>
+      <p class="text-muted mb-1">{{ user.email }}</p>
+      <span class="badge bg-primary fs-6 px-3 py-2">{{ user.role }}</span>
+    </div>
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <a href="/edit_user/{{ user.id }}" class="btn btn-warning">✏️ Edit</a>
+      <form action="/delete_user/{{ user.id }}" method="POST" onsubmit="return confirm('Delete this user?');">
+        <button class="btn btn-danger">🗑️ Delete</button>
+      </form>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="/users" class="btn btn-outline-dark btn-lg">⬅ Back to User List</a>
+  </div>
+  {% else %}
+  <div class="alert alert-warning text-center">User not found.</div>
+  {% endif %}
+</div>
+{% endblock %}

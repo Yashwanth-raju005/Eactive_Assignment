@@ -1,0 +1,54 @@
+body {
+  background-color: #f5f8fb;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  color: #333;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f6ff;
+  cursor: pointer;
+}
+
+.avatar-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-placeholder,
+.avatar-placeholder-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9e2f3;
+  color: #3366cc;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.avatar-placeholder {
+  width: 36px;
+  height: 36px;
+}
+
+.note{
+  color: red;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.avatar-placeholder-large {
+  width: 140px;
+  height: 140px;
+  font-size: 3rem;
+  margin: 0 auto;
+}
+
+.user-avatar-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f1f3f5;
+}
