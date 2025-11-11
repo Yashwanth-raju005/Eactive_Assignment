@@ -7,7 +7,7 @@ app = Flask(__name__)
 db = mysql.connector.connect(
     host="localhost",
     user="root",              
-    password="yashu123", 
+    password="XXXXXX", 
     database="users"
 )
 cursor = db.cursor(dictionary=True)
@@ -96,3 +96,4 @@ def not_found(e):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
